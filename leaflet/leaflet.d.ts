@@ -195,6 +195,9 @@ declare namespace L {
         contains(otherPoint: Point): boolean;
         contains(otherPoint: PointTuple): boolean;
         toString(): string;
+        
+        x: number;
+        y: number;
     }
 
     type PointExpression = Point | PointTuple;
@@ -1459,6 +1462,13 @@ declare namespace L {
 
         // Properties
         dragging: Handler;
+    }
+                              
+    export namespace LineUtil {
+        export function simplify(points: Point[], tolerance: number): Point[];
+        export function pointToSegmentDistance(p: Point, p1: Point, p2: Point): number;
+        export function closestPointOnSegment(p: Point, p1: Point, p2: Point): number;
+        export function clipSegment(a: Point, b: Point, bounds: Bounds, useLastCode?: boolean, round?: boolean ): any;
     }
 
     export function marker(latlng: LatLng, options?: MarkerOptions): Marker;
